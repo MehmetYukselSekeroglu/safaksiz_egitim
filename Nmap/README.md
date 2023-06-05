@@ -10,13 +10,11 @@
 
 
 ```bash
+# Temel tarama 
+nmap 192.168.1.1 
 
-    # Temel tarama 
-    nmap 192.168.1.1 
-
-    # Domain taraması 
-    nmap google.com 
-
+# Domain taraması 
+nmap google.com 
 ```
 <p>
 
@@ -26,9 +24,7 @@ Stealth scan TCP 3 yönlü el sıkışmayı yarıda keserek bağlantı tamamlanm
 anormallik olarak görünecektir. Bağlantıyı yarıda kesme işlemi içinde sudo yetkilerine ihtiyaç duyar.
 
 ```bash
-    
-    sudo nmap -sS 192.168.1.1 
-
+sudo nmap -sS 192.168.1.1 
 ```
 </p>
 
@@ -43,8 +39,8 @@ sunucuların hata mesajlarını yakalamak ve parsellemektir örnek olarak.
 Nmap ile ip adresinin 80 portunu tarayalım 
 
 ```bash 
-    # nmap komutumuz 
-    nmap -sV 195.XXX.235.121 -p80
+# nmap komutumuz 
+nmap -sV 195.XXX.235.121 -p80
 ```
 <img src="img/nmapVersionCikti.png">
 
@@ -54,8 +50,8 @@ Nmap ile ip adresinin 80 portunu tarayalım
 
 Birde telnet ile 
 ```bash 
-    # telnet komutumuz 
-    telnet 195.XXX.235.121 80
+# telnet komutumuz 
+telnet 195.XXX.235.121 80
 ```
 <img src="img/telnetCiktisi.png">
 
@@ -69,8 +65,8 @@ Scriptleri kullanırken dikkat edilmesi gereken nokta bu scriptlerin her port i�
 <br>
 
 ```bash
-    # vuln katagorisindeki scriptler ile 80 portunu tarayalım ve zafiyet varmı bakalım hemen 
-    nmap --script=vuln 195.XXX.235.121 -p80
+# vuln katagorisindeki scriptler ile 80 portunu tarayalım ve zafiyet varmı bakalım hemen 
+nmap --script=vuln 195.XXX.235.121 -p80
 ```
 <img src="img/vulnScript.png">
 
