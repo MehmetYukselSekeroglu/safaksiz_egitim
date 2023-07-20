@@ -146,15 +146,86 @@ bu nedenle anahtarın iletilmesi için güvenli bir kanal olması gerekmektedir 
 
 Gelişmiş şifreleme standardı olan `AES` 1997 yılında abd da DES in yetersiz kalması sonucunda geliştirilmiş bi blok şifreleme algoritmasıdır şifrelenecek veriyi 128 bitlik `32 byte` lık parçalara bölerek işler ve şifreleme için sürümlerine bağlı olarak 128, 192 veya 256 bit anahtar kullanabilir. Bu anahtar boyutları sayesinde aes birkaç yüzyıl daha kaba kuvvet saldırılarına dayanabileceği düşünülmektedir.  Burada önemli olan nokta anahtar ile parolanın karıştırılmamasıdır. 
 
+Peki aes in kaç anahtar olasılığı varda kırılımıyor:
+
+Bit değerleri 2 olasılığa sahiptir yani `2 üzeri 128` olasılık vardır 128 bitlik anahtarlar için.
 
 
 
 
 
+<h3> Örnek şifrelemeler yapalım </h3>
+
+AES hem nobil hemde masaüstünde kullanabiliriz bilgisayar için `GPG (Gnu Privacy Guard)` aracını kullanacaz.
+<br>
+
+<h4> Öncelikle Şifrelenecek bir Dosya belirleyelim: </h4>
+
+
+Resimdeki gibi çok çok gizli bir dosya ayarladım şimdi gpg ile şifreleme yapalım.
+
+<img src="img/GizliDosya.png">
+
+
+
+Şimdi şu komutumuz ile şifreleme yapalım hemmen.
+
+`gpg -v -c sifrelenecek_dosya` <br>
+`-v Verbose (daha ayrıntılı çıktı)` <br>
+`-c Sadece Simetrik şifreleme kullan` <br>
+`sifrelenecek_dosya is hedef dosyamızdır` <br>
+
+Bu komuttan sonraki çıktı şu şekilde olacaktır.
+
+<img src="img/GPGaes.png">
+
+Çıktının ilk satırı şifrelemek için parola istediği bi ekran açtığı için geldi alakalıdır sonrasına bakacak olursak bize `aes256` kullandığını yani 256 bitlik anahtar kullanan versiyonu kullandığını belirtir. En son satırda ise orjinal dosyaya değilde aynı isimde ama sonuna `.gpg` eklediği dosyaya yazdığını belirtdi ve işlemin başarıyla bittiğini belirtdi.
+
+``` bash
+
+TheKoba-dev@Safaksiz-$ file gizli_dosya.txt.gpg 
+# Çıktı: gizli_dosya.txt.gpg: GPG symmetrically encrypted data (AES256 cipher)    
+
+```
+
+
+Linux üzerindeki `file` komutumuz ile şifrelenmiş dosyamızın tipine baktık ve bize GPG simetrik şifreleme ile şifrelenmiş veri ve aes256 kullanıldığını belirtiyor, dosyamızı okumaya çalışalım birde.
+
+<img src="img/CatEncFile.png">
+
+Görüldüğü gibi içerik okunamıyor bunun dosya uzantısı ile alakası yoktur o sadece kullanıcı tarafından anlaşılması için eklenir bu dosya artık ilgili parola veya anahtar olmadan açılamicaktır.
 
 
 
 
+<h3> Örnek şifrelemeyi çözelim</h3>
+
+
+<img src="img/GPGdecrypte.png">
+
+
+Komutumuz şu şekildedir `gpg -o cıktı_dosyası.txt -d sifreli_dosya.txt.gpg` buradaki `-o cıktı_dosyası` kısmını ekleme sebebimiz gpg nin şifresi çözülen veriyi direk ekrana yazmasıdır bu nedenle program veya resim şifrelemiş isek sorun olmasın diye dosyaya yazacağız `-d sifreli_dosya.txt.gpg` de şifresi çözülecek dosyadır doğru parola verildikten sonra ver çözülerek dosyaya yazıldı ve okunur hale geldi.
+
+
+
+<br>
+
+
+<h1>Asimetrik Şifreleme:</h1>
+
+Asimetrik şifreleme'nin çalışma mantığı temelde iki anahtarın kullanılmasıyla gene matematiğe dayanmaktadır. Bu anahtarlar şu şekilde olur birisi `Açık anahtar (Public key)` diğeride `Private key (Gizli anahtar)` olmak üzere iki anahtar ile çalışmaktadır bu anahtarlardan Açık anahtar herkes tarafından veriyi şifrelemek için kullanılabilmektedir çözme işlemi ise sadece gizli anahtar ile olmaktadır (gizli anahtar hem şifreleme hem çözme yapabilir)
+
+<br>
+
+`Public key -> Sadece veriyi şifreleyebilir`
+<br>
+
+`Private key -> Hem şifrelemeyi çözebilir hem şifreleyebilir`
+
+<br>
+
+
+Simetrik şifreleme'nin sadece veri şifreleme değil `Veri doğrulama`, `Kimlik doğrulama`, `Anahtar değişimi`, `Güvenli kanal` ve `Anahtar güvenliği` gibi özellikleride bulunmaktadır.
 
 
 
