@@ -1,0 +1,195 @@
+#############################################################################################################
+
+-NOT:5- PENTEST FAZ-1: RECONNAISSANCE:
+
+#############################################################################################################
+
+-ARAMA ÖPERATÖRLERİ İLE GOOGLE DORKİNG:
+
+> google vs arama motorları siteleri indexler ve içlerindeki bilgileri bize verir indexlnmesinin istemedğimiz
+  sayfaları ise robots.txt adlı bir dosyaya kaydederiz eğer bu dosya hatalı duzenlenirse istenmeyen şeylerde 
+  idexlenecektir 
+
+> operatörler:
+	> site: -> ifadeyi şu sayfa içerisinde arat demektir 
+	> "metin ve deneme" -> kelimeleri tek bir kelime olark algılatır 
+		-site:tbmm.gov "suç ve ceza" + "kanunlar" -> 2 kelime öbeğini tek bir sitede aynı nda arattık
+	> - çıkartma + eklemek içindir 
+	> OR demek veya AND demek ve demektir 
+#############################################################################################################
+
+-SHODAN NEDİR?:
+
+> shodan IoT cihazların arama motorudur 
+	  |-> internet of thing -> nesnelerin interneti demektir 
+> kendi içerisinde google gibi filtreleri vardır 
+
+not: rdesktop -k tr 192.168.1.1
+	|-> uzak masaustu işlemi içindir -k ise klavye duzeni belirtir 
+
+> terminal versiyonuda vardır:
+	- shodan init api_key
+
+#############################################################################################################
+
+-WAYBACK MACHİNE NEDİR NEDEN KULLANILIR:
+
+> archive org içinde wayback machine kısmındadır bu alan siteleri belli zamanlarda giderek 
+  resimlerini çeker ve depolar 
+
+> sadece siteyi değil içerisinde bulunan dosyalrıda yedekleyebilmektedir 
+> ia_archiver -> robots.txt ye yazılırsa web sitemiz archive og tarafından es geçilir 
+
+#############################################################################################################
+
+-DOMAİN ENUMERATİON NEDİR, NASIL YAPILIR:
+
+> enum diyede geçer bunu dns için yapmak dns loookup diyede geçer 
+> centrolops bunu web üstündende ypar 
+> whois.com 
+> robtex.com 
+
+> whois domain_adresi
+> whois domain_adresi -H -> legal bilgileri hiç göstermez
+ -I -> iana uzerinden sorgulr 
+ 
+> nslookup -> dns sorgusu için 
+> dig -> kayıtlarına vs bakmak için gene dns tooludur 
+> dnsrecon -d domain.com -> dns kayıtlarını alır 
+> dnsenum domain.com -> zone vs pekçok şeye bakar 
+> fierce --domain google.com -> dnsenum gibidir 
+
+################################################################################################3
+
+-SUBDOMAİN'lerin TESPİTİ:
+
+> sudo apt install sublist3r -> subdomainleri tespit etmek için kullanırız
+> sublist3r -v -d google.com
+			 |-> -v demek verbose demek yani bilgileri ekrana dök
+			 > -o ile dosyaya yazdıraniliriz 
+			 
+> subdomainler en iyi ssl fingerprintden çıkmaktadır 
+	|-> bu işlem için crt.sh adlı siteyi kullanabiliriz 
+	> bunun sebebi whilecard sertifikalandımasıdır sertifikalar siteden alınırken
+	  hangi subdomainlerde çaloşacağıda yazmak zorundadır 
+	  tabiki *.domain.com şeklinde olmadıkça 
+
+> sudo apt install subfinder -> subdomainleri tespit etmek içindir gene 
+> subfinder -v -d google.com 
+> şeklinde kullanılabilmektedir 
+
+> crt.sh ı terminalden kullanmak
+> ct-exposerr GitHub şeklinde indirilip kullanılabilir 
+
+################################################################################
+
+-DNS ZONE TRANSFER KONTROLÜ:
+
+> DNS serverleri birbirini kopyalabilir ns1 ns2 ns3 şeklinde bunlar 
+birbirini eşitleme işlemlerine zone transfer denmektedir 
+AXFR -> dns zone transferi yapmakl için birbirlerine attıkları sorgu 
+
+> bu işlemin kontrolu için dnsrecon aracını kullanacaz
+> dnsrecon -d domain.com -a (AXFR ın a sı) şeklinde bakabiliriz 
+
+
+###################################################################################
+
+-REVERSE IP LOOKUP İLE HOSTTAKİ WEB SAYFALARININ TESPİTİ:
+
+> ip lerin isim karşılığını bulacaz
+> yougetsignal bu araçlardan biridir ve bu bir websitesidir 
+
+> reverseip.domaintools.com -> bu işlemler için gene bir web sitesi 
+
+
+####################################################################################
+
+- WES SİTELERİNDE KULLANILAN TEKNOLOJİLERİN TESPİTİ:
+> builtwith.com -> bu işlemleri yapan bir web sitesidir 
+> webtechsurvey.com 
+> similartech.com
+> netcraft firefox uzantısıda bu işlemleri yapmaktadır 
+
+############################################################################################
+-WEB SİTELERİNDE DOSYA-DİZİN TESPİTİ VE WORDLİST KAVRAMI:
+> bu işlemlerde dirb ve dirb buster olmak üzere 2 program kullanacağız
+> dirb kullanımı: dirb url opsiyonel_wordlist 
+
+
+###############################################################################################
+-PHOTON VE RACCOON İLE TÜMLEŞİK TESPİTLER
+raccoon nasıl indirilir?
+> githubdan çeebileceğimiz gibi "pip install raccoon-scanner" diyerekte indirebiliriz 
+    kullanımı: roccoon url.com -o kayıt_dosyası
+
+> photon kurulumu: 
+direk github dan çekilip kurulabilir ve kullnılabilir 
+
+#################################################################################################
+-OSINT KAVRAMI VE E-MAİL HESAPLARI (PERSONEL) TESPİTİ:
+> bu işlemi yapan web siteleride bulunmaktadır mesela 
+> hunter.io -> limitli olarak ücretsizde kullanılabilmektedir firefox eklentiside bulunmaktadır 
+> skymem.info -> gene mail adresleri için belli bir miktar ğcretsiz kullanum sağlar 
+
+> theHarvester -d domain.com -b all -> tüm ünternetde tarama yapar all demek heryer demektir 
+    > api key eklemek için /etc/theHarverster altındaki dosyaya eklenebilir 
+    > -f parametresi ile dosyaya yazdırabiliriz 
+
+> infoga github dan alarakda kullanabiliriz 
+-d domain.com -s all -v 2 
+
+
+###########################################################################################################
+-POTANSİYEL PROFİL TESPİTLERİ:
+> profil3r adlı toolumuzu kullanacağız pip install profil3r diyerek indirilebilir 
+> profil3r -p sabancı holding -> gibi kullnılabilir 
+> osrframework -> pip ile indrilebilir 
+> social-analyzer -> pip ile indirilebilir -> baya güçlüdür 
+
+
+##########################################################################################################
+-MALTEGO İLE TÜMLEŞİK OSINT:
+
+> CaseFile -> kaliteli bir transformdur 
+    > outh of the box -> kutunun dışından bak sloganlıdır 
+
+> AlienVault OTX -> tehditler hakkında OSINT sağlar  - api lazım
+> Clearbit -> kimlik verileri müşteri araşturmaları  - api lazım
+> Farsight DNSDB -> dns veritabanıdır baya sağlamdır 
+> FullContact -> TR de yasaklıdır ama iyidir 
+> GreyNoise -> analstlerin dikkatinden kaçanları ykalar iyidir 
+> Have I Been Pwned -> sızdırılmış mail veritabanıdır 
+> host.io iyidir ama api lazım
+> IPinfo 
+ 
+ #############################################################################################################
+-PROXY VE VPN KAVRAMI:
+> Proxy, çevrim içi bir kaynağa erişmek isteyenler için aracılık eden servistir. internet erişimine aracılık eden vekil sunucular (proxy server)
+ler için yerleşik bir tanımdır 
+> Proxy iletişimi şifresizdir gizlilik sağlamaz proxy gizlilik vadetse bile proxy sunucusuna giden trafik ısp ve 3.kişiler tarafından okunabilir 
+
+> VPN iki uç arasındaki iletişimin şifrelendiği bir servistir. Bu şifrelendirilmiş kanala tünel adı verilir VPN trafiği vpn sunucusuna kadar 
+okunabilir değildir  
+
+
+> her iki serviste ip değişimi sağlar ve log tutabilir 
+
+> OpenVpn kullanılabilir güvenilir bir servistir ve OpenSSL ile 256 bit şifreleme kullanbilmektedir 
+> VpnBook com mesela isviçre merkezlidir güzel bir sağlayıcıdır 
+    openvpn --config vpnbook.ovpn -> kullanım şekli
+
+#########################################################################################################
+> iptables -L -> iptables yönlendirme tablolarını gösterir 
+> closed shell system -> karanlık web katmanıdır 
+> tor browseri anonsurf ile kullanabilmek için use bridge diyerek obfs4 seçebiliriz 
+> new idenity -> yeni kimlik verir torda 
+
+
+
+
+
+
+
+
+

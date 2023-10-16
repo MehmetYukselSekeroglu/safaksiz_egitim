@@ -1,0 +1,17 @@
+Lab1 kurulumu:
+--------------------------------------
+> metasploitable3 kullanılacaktır 
+> kurulum adımları metasploitable3 ün GitHub hesabında bulunmaktadır 
+
+##################################
+Lab2 kurulumu:
+------------------------------------------
+> Kioptrix1 (RedHat zafiyetli sunucusu)
+> vulnhub da bulabiliriz bunuda
+
+
+#####################################
+Lab Network ayarları:
+---------------------------------------
+> makinelerin ağ ayarlarını kontrol etmek önemlidir 
+

@@ -1,0 +1,45 @@
+#######################################################
+-SECURİTY-HARDENİNG:
+#######################################################
+-SMB GÜVENLİĞİ:
+> domain controller üzerinden group policy kısmından yapabiliriz 
+> registery key eklememiz gerek 
+> yeni key üret diyelim
+> HKEY_LOCAL_MACHINE konumunda 
+> keypath eklicez SYSTEM\CurrentControlSet\Services\LanmanServer\Parametres 
+> değer adı "SMB1" 
+> value type REG_DWORD value olarkda 0 verecez
+
+> security kısmından smb imzalamayı herzaman kullanılacak şekilde yapacaz 
+
+#######################################################
+-NETWORK'TEN ERİŞİMLERİN KISITLANMASI:
+> bu işlem domain controller için mantıklı olmaz local için iyidir 
+> computer configurate > windows setting > security settings > local policies > User rights assigment
+	> buradan acces this computer kısmından ayarlayabiliriz dc den 
+
+> local group policy kısmından local makineler için ayarlanabilir 
+> rdp içinde aynı şekilde yapılabilir 
+
+
+
+-NTLMv1 Kullanımının Kapatılması:
+> windows > securty > local policies > security options 
+	> burdan lan doğrulama seviyesini değiştirebiliriz 
+	
+> currentport portların bağlantılarını vs monitorleme işlemi yapar 
+
+> xarp mesela arp spooflarda clientleri uyarır 
+
+> SSL Strip ve HSTS Kavramları
+	> HSTS browserları https ye zorlar 
+		> paketlerin başlangıç kısımlarında olur 
+		> geçersiz sertifika varsa iptal et talimatları vermesini ister 
+		> bu talimatlarının nekadar süreceni belirtir 
+		> hsts preloader 
+		
+	> SSL strip ise ssl i parçalamaktır 
+	
+
+> https everywhere kullanarak http bağlantılarını https ye zorlayabiliriz 
+

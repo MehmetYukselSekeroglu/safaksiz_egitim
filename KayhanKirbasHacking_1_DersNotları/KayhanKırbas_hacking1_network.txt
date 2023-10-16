@@ -1,0 +1,526 @@
+##############################################################################################
+
+Ayhan hoca etik-hacking dersleri: Not-1 Temel Network
+
+###############################################################################################
+-AĞ NEDİR ÖZELLİKLERİ VE FAYDALARI:
+
+NEDİR:birbileri ile belirli kurallar çerçevesinde iletişim kuran cihazların oluşturduğu yapıdır 
+bu belirli kurallar günümüzde TCP/IP dir 
+
+
+Özellikleri ve faydaları nelerdir:
+= dosya paylaşımı: cihazların birbiri arasında dosya paylaşmasını sağkar 
+= program paylaşımı: merkezi bir bilgisayara kurulmuş olan programların uzaktan kullanımını sağlar
+= donanım paylaşımı: birden çok kullanıcının bir yazıcıyı kullanabilmesini sağlar 
+= merkezi yönetim: uzaktan ve toplu yönetilebilirliği sağlar 
+= güvenlik: ağa bağlı güvenlik özelliklerinin uygulanmasını ve kullanılmanımını sağlar 
+
+#################################################################################################3
+-BAŞLICA AĞ DONANIMLARI:
+
+=NIC (ethernet cart): cihazların ağa bağlanmalarını sağlar IP ve MAC adresi bilgilerini tutar
+	elektrik-veri ve veri-elektrik şeklinde çevrim yaparlar 
+	
+=switch: birden fazla cihazın ağa bağlanmasını ve kendi aralarında haberleşmelerini sağlar 
+	ip değil mac adresleriyle iletişim sağlar 
+	
+=firewall: Gelen-Giden network paketlerinin içeriğini okur ve tehditleri bloklar erişim 
+	izinlerindende sorumludur 
+	
+=router:Farklı veya birden fazla network arasında IP çevrimi görevi yapar (NAT) hedefe giden 
+	en kısa yolu hesaplar burda paketlerdeki macler modemin mac adresi ile değiştirilir 
+	LAN-LAN WAN-WAN arası çevrimde yapabilmektedir hedefe giden en kısa yolu hesaplar 
+	
+NOT:
+	LAN = Local Area Network
+		örnek ip: 192.168.1.43 
+	WAN = Wide Area Network 
+		örnek ip: 215.55.14.124
+	NIC: Network Interface Card 
+		örnek: ethernet kartı 
+	NAT: Network Addres Translator 
+		örnek: ev wifisinden dış internete bağlanırken modem bunu yapar 
+	Source: kaynak
+	Destination: Hedef 
+
+NOT: pek çok cihaz gerekli durumda router görevi görebilir 
+###########################################################################################3
+	
+-NETWORK'ün TEMELLERİ:
+
+	-AĞ(NETWORK) MİMARİSİ:
+ağlar büyüklüklerine göre ikiye ayrılır 
+
+	1)Local Area Network (LAN):
+LAN'lar yüksek hızlı, güvenilir ve küçük bir alana yayılmış olan lokal (yerel) ağlardır
+örnek: bir şirketin veya evin içindeki ağlar "iç ağda" denir 
+	
+	2)Wide Area Network (WAN):
+coğrafi olarak birbirinden uzak LAN ların birleştirilmesiyle oluşan ağdır örnek: interne ağı 
+"dış ağ" da denir 
+
+örnekleme:
+	bir daire LAN ise apartman WAN dır 
+	bir apartman LAN ise sokak WAN dır 
+şkelinde örneklenebilir
+###########################################################################################
+
+-AĞ PROTOKOLÜ KAVRAMI:
+= ağda çalışan cihazların iletişim kurabilmesi için gerekli kurallar bütünüdür 
+= ağ protokollerini dillere benzetebiliri
+=günümüzde en yaygın kullanılan protokol TCP/IP (Transmission Control Protocol / Internet Protocol)dir 
+TCP/IP her türlü ağda kullanılabilen esnek, gelişmiş ve hızlı bir protokoldür 
+=Kullanılmak istenen protokolü, işletim sistemleri sağlar  
+
+###########################################################################################
+
+-OSI (Open System Interconnection) Referans modeli:
+> Network iletişiminde ortak bir dil olarak 1984 yılında kullanılmaya bailanmıştır 
+> 7 katmandan oluşur 
+> her bir katman alt katmanlardan hizmet alır üst katmanlara hizmet veirir 
+> gönderici her bir katmanda veriye (pakete) kendi bilgisini ekler. Alıcıda çıkartır 
+> ekleme işlemine ENKAPSÜLASYON çıkartma işlemine DEENKAPSÜLASYON adı verilir 
+
+	7-) Application Layer (Uygulama Katmanı)
+	6-) Presentation Layer (Sunum Katmanı)
+	5-) Session Layer (Oturum Katmanı)
+	4-) Transport Layer (Ulaşım Katmanı)
+	3-) Network Layer (Ağ Katmanı)
+	2-) Data-Link Layer (Veri Bağlantı Katmanı)
+	1-) Physical Layer (Fiziksel Katman)
+	
+Bunu daha kolay hatırlamak için bir kodlaması vardır oda:
+	
+	7-) Acele
+	6-) Posta 
+	5-) Servisi
+	4-) Türkiye'de 
+	3-) Neden	
+ 	2-) Daha
+ 	1-) Pahalı
+ 	
+Kodlaması bu Şeklindedir....!
+
+	7-)Application Layer (Uygulama katmanı)
+> E-posta, dosya transferi, web erişimi gibi ağ hizmetleri sağlayan servisleri destekler 
+> kullanıcının google.com'u çağırdığını Presentation katmanına bildirir sadece 
+> presentation katmandan gelen paketi de uygulamada açıp kullanıcıya görüntüler 
+> gerisiyle ilgilenmez 
+> kullanıcıya en yakın, kullanıcı dostu katmandır 
+	kullanıcının bilgisayar dili tercümanı gibidir
+		
+	6-)Presentation Layer (Sunum katmanı)
+> Application katmanından gelen kullanıcının isteklerini yorumlayıp alt katmanlara hazırlanması için
+işe koyulur
+> dönüştürme işlemlerini yapar 
+> şifreleme,çözme: sıkıştırma, karakter seti değiştirme, grafik komutlarının yorumlanması gibi
+işler burada yapılır 
+> gelen paketlerin kullanıcıya sunumu içinde burada hazırlanır 
+	
+	5-)Session Layer (Oturum katmanı):
+> diğer bilgisayarlar ile iletişim sağlandığında uygulamalar arasında oturum burada açılır
+> karşılıklı iki uygulamanın birbirini bulduğu katmandır 
+> bu oturumun kopmaması, stabil olması, oturumda veri senkronizasyonu gibi görevleri vardır 
+çakışmaları önler 
+> iletişimde problem olması halinde gönderilen verinin baştan komple gönderilmemesi için veriye
+chechpointler ekler aksaklık halinde nekadarının gönderilemediği tespit edilerek sadece o kısım 
+gönderilir 
+	
+	4-)Transport Layer (Ulaşım katmanı):
+> birincil görevi paketin alıcıya ulaştığından emin olmaktır 
+> session katmanından gelen verileri, network katmanının daha iyi anlayabileceği şekilde küçük
+parçalara böler 
+> bu parçalara segment adı verileri, segmenleme görevi buranındır 
+> alt ve üst katmanların eş zamanlı çalışabilmesinide sağlar bu işleme multiplexing adı verilir 
+> web de gezerken aynı anda download yapılabilmesinden bu katman sorumludur
+> TCP (Transmission Control Protocol) ve UDP (User Datagram Protocol) bu katmanda işlenir 
+	
+	3-)Network Layer (Ağ katmanı):
+> en önemli katmandır 
+> paketlerin hangi route (rota) üzerinden gideceğini belirler 
+> paketin hedefe ulaşmasında birden fazla rota varsa doğrusuna karar vermekle sorumludur 
+> bu yüzden ip adresi burada girilir 
+> verinin kalitesi (QoS - Quality of Service) de burada belirlenir
+> segment boyutlarını, Data-Link katmanının daha iyi anlayabileceği daha küçük segmentlere böler 
+
+	2-)Data-Link (Veri bağlantı katmanı):
+> gönderilen verilerin elektrik sinyallerine dönüştürülüp kabloya iletilmesini ve tersi yöndeki
+işlemi gerçekleştiren katmandır 
+> MAC bilgisi burada girilir 
+> Network katmanından gelen segmentleri, Physical katmanda yola çıkabilecek şekilde frame lere böler 
+> yolda bozulabilecek frame lerei tespit etmek için framelere  CRC (Cyclic Redundancy Check) bilgileri
+ekler
+> karşı bilgisayarda CRC bilgisi doğru okunuyorsa frame bozulmamıştır 
+	
+	1-)Physical Layer (Fiziksel katman):
+> Elektriksel, optik veya kablosuz sinyalleri A noktasından B noktasına iletmekle sorumludur 
+> sadece bit'lerin bir bilgisayardan diğer bilgisayara ulaşmasıyla ilgilenir
+> paketi teslim etmekle sorumludur içeriği ile ilgilenmez
+> bu katmanda pakete, paketin hangi sinaylle taşınacağı, bit'lerin ne şekilde dizileceği, konnektörler
+deki kaç pin ile çalışacağı, adaptörün ne zaman veri gönderip alacağı, teslimatın başarı durumu gibi 
+detaylar tanımlanır, pakete yazılır 
+> ve fiziksel detaylar....
+
+	TCP/IP (Transmission control protocol / internet protocol)
+
+-TCP/IP model:
+	1-)Application layer -> osi deki ilk 3 katmanı kapsar 
+	2-)Transport layer -> osi deki transport layer
+	3-) ınternet layer -> osi deki internet layer 
+	4-) Network access layer -> osi deki Data link ve physical layerleri kapsar
+###############################################################################################3
+TCP/IP içeriğinde 2 protokol vardır:
+-TCP ve UDP protokolleri
+
+	-TCP (Transmission Control Protocol):
+>bağlantı temelli güvenilir bir iletişim protokolüdür 
+> veri iletimine başlamadan önce gönderici ve alıcı arasında anlaşma sağlar 
+> alıcıya ulaşmayan veriyi tekrar yollar 
+
+	Theree-Way Handshake işlemi:
+------------------------------------------------------------------------|
+1------	A gönderici -> B alıcı	  SYN	  "Sıra numaraM 47"
+ |-----	A gönderici <- B alıcı 	  ACK 	  "Sıra numaraN 47!"
+2|	
+ |-----	A gönderici <- B alıcı 	  SYN 	  "Sıra numaraM 52"
+3------	A gönderici -> B alıcı 	  ACK     "Sıra numaraN 52!"	        
+------------------------------------------------------------------------|
+	
+	-UDP (User Datagram Protocol):
+> bağlantı temelli değildir ve kontrol mekanizması içermez
+> kontrol yapmadığı için TCP'den hızlıdır 
+> hızın veri bütünlüğünden önemli olduğu bağlantılarda kullanılır
+
+####################################################################################################3
+ 
+-PORT'lar 
+> portlar, bilgisayarların giriş kapılarıdır
+> TCP ve UDP bağlantılar, veriyi üst katmanlara taşımak veya uygulamaya iletmek için port numaraları 
+kullanırlar
+> port numaraları, aynı anda yapılan farklı iletişimleri ayırt etmek için kullanılırlar 
+> her application katmanı servisi, belirli bir portdan sunulur 
+> bir bilgisayarda 65536 adet port vardır. 1024 tanesi iyi bilinendir (well-known)
+
+	Çok sık kullanılan portların tablosu
+---------------------------------------------
+| Port Number 	Protocol    Application	
+| 20		TCP	     FTP data
+| 21		TCP	     FTP Control
+| 22 		TCP	     SSH (Secure SHell)
+| 23		TCP	     Telnet
+| 25		TCP	     SMTP
+| 53		UDP,TPC	     DNS (Domain Name Server)
+| 67,68  	UDP          DHCP
+| 69            UDP          TFTP
+| 80	      	TCP	     HTTP (Hyper Text Transer Protocol)
+| 110		TCP	     POP3
+| 161		UDP	     SNMP
+| 443		TCP	     HTTPS (HTTPSecure)
+| 16,384-32,767	UDP	     RTP-based Voice and Video (Real Time Protocol)
+------------------------------------------------
+
+###############################################################################################################
+
+-TCP Bağlantısı Başarım Araçları:
+	
+    -ARP (Address Resolution Protocol):
+	Ağ cihazlarının 2 adresi vardı
+	
+	a) MAC
+	Fiziksel adresitir 
+	Ağ kartlarının ROM belleğine üreticisi tarafından yazılır 
+	48 bit'lik hexadecimal (on altılık) bir sayıdır 
+	örnek: 4F:00:1C:25:1B:4B
+		ilk 3 blok markayı son 3 blok ise modeli belirtir 
+	b) ip
+	Mantıksal adresidir 
+	Cihazlara yöneticiler tarafından yazılır 
+	32 bit'lik bir binary (ikilik) bir sayıdır 
+	örnek: 11001100.10010111.00110000.00000010
+	böyle birşeyi hatırlamak ve yazmak zor olduğu için her 8 li grup (4'lü parça)
+	decimal'e (ondalık)'a çevrilmiştir yani 192.168.1.1 gibidir artık
+	
+	verinin gönderilebilmesi için her iki adresinde bilinmesi gerekir.
+	Bilinmiyorsa ARP Request mesajı yayınlayıp öğrenebilir 
+	ip adresi 192.168.1.1 olan bilgisayarın MAC'ı kaç? şeklinde 
+	  
+    -ICMP (Internet Control Mesage Protocol):
+    	sorun gidermek ve hata tespiti için kullanılır 
+    	
+    	a) ping: 
+    	kaynaktan hedefin ip adresine gönderilen küçük bir mesajdır (Echo Request)
+    	mesajı alan bilgisayar cevap verir (Echo Reply)
+    	mesajın hedefe ulaşması zamanlarınıda gösterir (Rount Trip Time)
+    	windowsda 32 byt
+    	linuxda 56 byt dır bu paketler 
+    	
+    	b) Tracert: 
+    	kaynaktan hedef ip ye giderken geçilen ip ve cevap verme sürelerini gösterir 
+    	yol (rota-route) üzerindeki her bir ip ye HOP adı verilir
+	   
+################################################################################################
+
+-TCP/IP paketleri ve içerikleri:
+
+> bir ağın en küçük yapıtaşlarıdır, iletişimdeki temel bilgi birimleridir 
+> kaynak, hedef, tip, metot, yaşam süresi, iletim doğruluk hesaplaması gibi bilgiler içerebilir 
+> yola çıkmaya hazırlanırken her katmanda pakete bilgiler eklenir 
+> pakete bilgi ekleme işlemine enkapsülasyon, çıkartma işlemine deenkapsülasyon denir
+> data eklendikçe, sırayla SEGMENT -> PACKET -> FRAME oluşur 
+	segment ikek veri + gönderin ip si + fcs (bütünlük kontrol biti)
+	packet iken alıcı ip adresi ve gönderici mac adresi
+	frame iken alıcı mac adresi
+		EKLENİR!
+
+#####################################################################################################
+
+-RFC (Request For Comments):
+
+> Tüm internet standartları ve protokolleri için tanımlayıcı kurallardır
+> DNS, URL, WEB, DHCP, ICMP, HTTP gibi tüm kuralların tanımlarını içerir 
+> Farklı yıllar ve çeşitli kişilerce ortaya atılmış önergelerin testi ve kabul görmesiyle oluşturulur 
+> IETF (Internet Engineering Task Force) otoritesi tarafından yönetilirler 
+
+#####################################################################################################
+
+-IANA (Internet Assigned Numbers Authority):
+
+> internetin bir diğer büyük otoritesidir 
+> Ip adresleri, DNS adlerı, protokol atamaları, zaman senkronu gibi görevlerden sorumludur 
+> Tescil işlemlerini, üst kuruluşu olan ICANN (Internet Corparation for Assigned Names and Numbers)
+üzerinden yürütür 
+> IETF (Internet Engineering Task Force) ile yakın kordineli olarak haraket eder 
+> bölgelere göre ip veritabanları vardır kendi web sitesinde bulunur bunlar
+	- kıtalar ve ülkelerdeki ip aralıklarını vs belirler en basitinden 
+
+lite.ip2location -> ülke bazlı ip dağıtılımları için
+
+####################################################################################################
+
+-IP (Internet Protocol) adresleri:
+
+> ip adresleri, cihazların hangi ağda olduğunu ve ağdaki kimliğini belirtir 
+> ip adresleri 32 bitlik binary ve mantıksal bir sayıdır 
+> örnek: 1100000010101000001011101010111010
+	böyle bir sayının hatırlanması ve yazılması zor olduğu için 4 parçaya bölünüt
+	10101010.11001100.00110011.00011101
+	her bir parçaya "octet" adı verilir her ip de 4 octet vardır 
+	
+	her octet de decimal'e (ondalık'a çevrilir)
+	ip aralıkları bizler için 192.168.1.1 gibidir ama bilgisayarlar için hala en baştaki gibi
+	binary dir 
+> bu kolaylık sağladığımız işleme "Dotted Deciaml" adı verilir 
+> her octet minimum "0" maksimum 255 değerini alabilir
+
+-NETWORK ID VE HOST ID KAVRAMLARI:
+
+ip adresleri 2 kısımdan oluşur:
+	
+	1-) NETWORK ID:
+	network un kendine ait id sidir bu id cihazların hangi ağda olduğunu belirtir 
+	aynı ağda bulunan cihazların network id leri aynı olmak zorundadır 
+	
+	2-) HOST ID:
+	cihazın ağda kendisini tanımlayan id sidir 
+	aynı ağda olan cihazların host id leri farklı olmak zorundadır 
+	0 değerini ve 255 değerini alamazlar en az 1 en fazla 254 olabiklirler 
+	
+	
+192.168.1.34 -> 192.168.1 e kadar network id 34 ise host id 
+
+###########################################################################################
+
+-SUBNET MASK VE IP SINIRLARI:
+
+= ip adreslerinin Network ID ve Host ID sini belirleyen faktör Subnet Mask (Alt ağ maskesi) dir 
+= subnet mask'ı belirleyende IP adresi sınıflarıdır 
+= her ip nin subnet mask'ı ve sınıfı vardır 
+
+|-------------------------------------------------------------------------------------------------------|
+|  sınıf |   1.octet dicaml |  Network ve host  |  subnet mask  |  Network   |   host sayısı |  /    	|
+|	 |	aralık	    |	id		|		|  sayısı    |		     |	     	|
+|=======================================================================================================|
+| A		1-126		N.H.H.H		  255.0.0.0	   126		16.777.214	/8	|
+| B		128-191		N.N.H.H		  255.255.0.0 	   16.382	65.534		/16	|
+| C		192-223		N.N.N.H		  255.255.255.0	   2.097.150	254		/24	|
+| D		224-239	    multicas için ayrl		-		-	-		-	|
+| E		240-254	    deneme ve test için		-		-	-		-	|
+|-------------------------------------------------------------------------------------------------------|
+
+NOT: /8 gibi gösterimler bitleri verir buda network id leri verir 24/8 -> 3 haneli C sınıfı yanis
+
+NOT: A class ındaki 127 yoktur sebebi ise local i yani makinanın kendisini kasteder!
+
+##############################################################################################################3
+
+-İLETİM TÜRLERİ VE TEKNİKLERİ:
+
+bir ağda 3 tür haberleşme vardır:
+	
+	1-) Unicast
+	bir cihazdan sadece bir cihaza yapılan iletim
+	
+	Kaynak <---------------------> A
+	
+	2-) Multicast 
+	bir cihazdan belirli bir grup cihaza yapılan iletim 
+
+			 |-------> A
+	Kaynak <---------|-------> B
+				   C -> grup üyesi değil
+				   
+	3-) Brodcast
+	bir cihazdan diğer tüm cihazlara yapılan iletim 
+	network teki son host ip si (.255) brodcast için kullanılır 
+	
+			       |--------> A
+	Kaynak <---------------|--------> B
+			       |--------> C
+			       
+#################################################################################################################
+
+-AĞ SERVİSLERİ:
+ağ ortamında kullanıcılar ve bilgisayarlara hizmet etmesi gereken servisler vardır 
+
+örneğin:
+	DHCP -> talep eden bilgisayarlara ağa katılması için IP dağıtır 
+	DNS  -> isimleri çözmelerine yardımcı olur 
+	NAT  -> IP çevrimlerini yaparak bilgisayarların dış dünyaya açılmasını sağlar 
+	
+  1-) DNS (Domain Name System):
+    - bilgisayarlar birbirleri ile sadece rakamlarla (ip ler ile) haberleşir harflerle değil 
+    - hedefe ulaşmak isteyen kaynağın ip adresine ihtiyacı vardır (LAN da veya WAN da)
+    - bu isimlerin ip karşılıkları gerekmektedir isim çözümlemesi yapılmalıdır bunları DNS sunucuları yaparlar
+    - DNS sunucusuna bu isim kimindir ip nedir diye sorulur serverde bunları soyler 
+    
+    not:bilgisayarlar sık sorguladıkları isimleri kendi ön belleklerine yazarlarki her defasında dns sorgusu
+    yapmaya gerek kalmasın diye 
+  
+  2-) DHCP (Dynamşc Host Configuration Protocol):
+    -ağdaki bilgisayarlara 
+    	-ip adresi
+    	-alt ağ adresi (subnet mask)
+    	-varsayılan ağ geçidi (default geteway) 
+    	-DNS server bilgisini dağıtan servistir 
+    - ip lerin benzersiz olması için çakışmaları onler 
+    - verilen ip leri ömür boyu olmaması için birnevi kiralar genelde bu süre 8 gündür 
+    - exclusion range ile istenmeyen aralıktaki ip leri dağıtımdan dışlayabilir
+    - farklı ip istemeyen sürekli aynı ip kullanmak isteyen client lere MAC ile rezervasyon yapar 
+    - DHCP kullanılmayan ağlarda ip adresi her client e manuel olarak girilmek zorundadır 
+    
+    not: serverlerde herzaman güvenilmez 
+    - clientler IP adreslerini otomatik alabilmek için ortamdaki DHCP sunucusunu bilmeleri gerekir 
+    - bunu ağda brodcast yayını yaparak öğrenirler, süreç şöyledir:
+    	
+    	-DHCP discover (DHCP keşfi): ilk ip alacak olan client, brodcast yayını yapar 
+    	 bu yayına DHCPDISCOVER yayını adı verilir Bu yayının içine MAC adresinide ekler 
+    	
+    	-DHCP Offer (DHCP teklifi): yayını alan DHCP sunucusu ağa DHCPOFFER mesajı yayınlar bu mesaj
+    	brodcasttir tüm client lara gider ama içinde mac bilgisi olduğu için sadece ilgilisi alır 
+    	
+    	-DHCP Request (DHCP İsteği): Client DHCP den gelen isteği kabul ederse DHCPREQUEST yayını ile 
+    	cevap verir bu mesajda brodcasttir 
+    	
+    	-HDCP Acknowledgement (DHCP onayı): DHCP, isteği kabul ettiğini DHCPACK brodcast yayınıyla duyurur 
+    	ve client ip adresi edinmiş olur 
+    	
+    	- kodlaması D.O.R.A dır 
+    	
+    APIPA (Authomatic Private IP Addresing):
+      -DISCOVERY yayınına bir DHCP den cevap alamayan client, ağ ip si olmaz
+      -fakat kendisine bir ip atar buna APIPA denir 
+      -APIPA ip si 169.254.x.x şeklindedir subnet'i ise 255.255.0.0 dır 
+      -APIPA ip si almış diğer clientler ile görüşebilir 
+    	
+  3-) NAT (Network Address Translation):
+    - bir network içib geçerli 2 tür ip adresi vardır 
+      
+      1-) Private IP: LAN a ait LAN da kullanılan iç ip lerdir 
+      2-) Public IP: WAN da kullanılan iplerdir internete aittir dış ip lerdir 
+    
+    - NAT, bu ağlar arasında ip çevirme işini yapar 
+    - Public (WAN) ve Private (LAN) ağlarının birbirleri ile haberleşmesini sağlar 
+    	- bilgisayaranızın ip si private ip dir 
+    	- evinizin ip si public ip dir 
+    - modeminizin eve bakan bacağında private IP, internete vakan bacağında Public IP vardur 
+    	örnek:
+    		192.168.2.1 -> private yani iç ip
+    		88.249.51.113 -> public yani dış şp
+    -client in 192.168.1.23 private ip si ile 243.portu 
+     serverin 85.74.221.23 public ip sinin 84.portu haberleşemez 
+     	çünki farklı networkteler NETWORK ID leri ve SUBNETLERİ farklı
+    - araya NAT girerse haberleşebilirler 
+    
+    - modeminde ISP (internet servis sağlayıcısı) tarafından atanan bir public ip si vardır 
+    - NAT, client in private ip sini modemin public ip si ile değiştirerek hedefe gönderir ve böylelikle 
+      haberleşebilirler 
+    - bu çevrim işi tersi yöndede gerçekleşir 
+
+###########################################################################################################
+
+-DOMAİN, DNS HİYERARŞİSİ VE FQDN KAVRAMLARI:
+
+> internetdeki dns ler hiyerarşik bir isimlendirme metodu kullanılır bu isimlendirmelere domin adı verilir 
+> ağaç şeklinde domain grupları ve bu domain gruplarının alt grupları şeklindedir 
+> bütün domainler ROOT (kök) adı verilen tek bir domainde birleşirler 
+> tüm domainler root domainin üyesidir bu yapıya dns hiyerarşisi denir 
+
+
+			ROOT
+          _______________|________________
+          |       |            |         |  		
+       .com      .gov         .edu      .org	----->  Top Level Domain (TLD)
+          |                              |
+       google                         wikipedi  ----->  2. seviye Domain
+          |                              |
+        mail (mail.google.com)           tr     ----->  Alt domain (Subdomain)
+        
+not: dikkat edilirse sondan başa doğru devam etmektedir! 
+
+
+-FQDN (Fully Qualified Domain Name):
+
+> DNS ağacında hiyerarşisinde bir bilgisayarın tam adresini belirten tamamlanmış addır        
+	mail.google.com bir FQDN dir 
+> Domainler, bir nesneler topluluğunu temsil etmek ve bunların merkezi yönetilebilirliği amacıyla 
+  şirket içlerinde de uygulanabilir. örnek: pepsi.local
+> buradada server05.pepsi.local veya muhasebe03.pepsi.local bir FQDN dir 
+
+##############################################################################################################
+
+-VPN KAVRAMI VE TÜRLERİ:
+
+> VPN (Virtual Private Network), şifrelendirilmiş bir iletimle, private (özel) ağa bağlanma metodudur 
+> iletişim şifreleme sürecinde:
+	-SHA
+	-AES
+	-3DES
+	-RSA
+	gibi encryption metotları kullanılır
+> iki tip VPN türü vardır:
+	1-) Client To Site (C2S) VPN:
+	kişilerin uygulamalar aracılığıyla belirli bir cihaza veya sunucuya bağlanarak 
+	şirket özel ağına katılmalarıdır
+	
+	Kullanıcı   		 şifreli vpn tüneli
+	  192.168.1.50/24  --------------------------------> VPN şirketi -----------------------> Hedef 
+	 (super vpn falan açtı)					88.156.221.12			123.142.77.34
+	  
+	  
+	2-)Site To Site (S2S) VPN:
+	şirketlerin kendi aralarında cihaz veya sunucuya bağlamarak özel ağlarını paylaşmalarıdır 
+
+	A şirketinin istanbul  		şifreli vpn tüneli 		A şirketinin konya
+	binası 176.16.554.22  <----------------------------------------> binası 22.156.12.88
+	
+		bu iki binanın aynı networktada olmasını sağlar 
+		
+> VPN bir encryption metotdu değildir bir özelliği odur!
+
+#############################################################################################################3
+
+	Dosya Sonuna ekleme alanı bu dosya cat dosya >> ekleme_yapılacakdosya şeklinde birleştirilebilir
+
+##############################################################################################################
+

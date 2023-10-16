@@ -1,0 +1,501 @@
+#############################################################################################################
+
+Kayhan Hoca etik Hacking: Not-2:
+	Temel işletim sistemi (OS) bilgisi - GNU/Linux
+#############################################################################################################
+
+-İŞLETİM SİSTEMİ NEDİR:
+
+> Donanımların denetimi ve yönetiminden sorumlu yazılımdır
+	en basiti donanım yazılımıdır diyebiliriz her donanımda olabilir 
+	
+> Temel sistem işlemlerinden ve programların çalıştırılmasından sorumludur
+> Yazılımların, donanım katmanlarına ve sistem katmanlarına erişebilmesi için arayüz sunar
+> İşlem (Process) yönetiminden ve işlenme sırasından sorumludur 
+> Giriş-Çıkış (Input-Output I/0), ağ (Network) ve bellek (RAM) yönetiminden sorumludur 
+> işletim sistemi Operating System in kısaltması "OS" ile gösterilir 
+
+not: google chrome bile artık os olmuştur kendi içinde eklenti vs çalıştırabilmektedir 
+	donanımı yöneten her türlü yazılım os olabiliyor 
+		
+-İŞLETİM SİSTEMİ (OS) SINIFLARI:
+
+> hizmet alan işletim sistemlerine istemci (client) 
+> hizmet veren işletim sistemlerine sunucu (server) adı verilir
+
+
+  client işletim sistemleri:
+    > windows xp/7/8/10    
+    > ubuntu               
+    > kali
+    > macOS
+    > Android
+    > Vmvare Workstation  
+  
+  server işletim sistemleri:
+    > windows server 2012/2016
+    > CentOS
+    > RedHat
+    > Solaris
+    > Netware
+    > Vmware ESXi
+    
+not: tabiki ubuntu vs gene sunucu olarak kullanılabilir ama tam verim alabilmek için biraz farklı 
+	olurlar ubuntunun hem client hemde server için sürümleri vardır mesela 
+	
+#############################################################################################################
+
+-SANALLAŞTIRMA TİPLERİ VE YAPILARI (PERFORMANS KIYASI):
+
+> Misafir (Guest) olarak adlandırılan birden fazla işletim sisteminin, aynı fiziksel donanım 
+  kaynaklarını (resources) paylaşarak çalışmasını ifade eder 
+> sanallaştırma sistemleri kullanıcı ile donanım arasında mantıksal bir katman oluşturarak kullanıcın doğrudan
+  fiziksel sistem kaynaklarını erişmesini engeller 
+> bu katman kullanıcı isteklerini alarak , uygun bir şekilde donanıma ileten, sanallaştırmanın çekirdeği olarak
+  ifade edilen Hypervisor veya VMM (Virtual Machine Monitor) adında mantıksal bir katmandır 
+> sanallaştırmas sadece işletim sistemleri için değildir. Network ve storage ler de sanallaştırılabilir 
+
+hypervisor un 2 tipi vardır 
+  
+  
+  1-)Bare-Metal Architecture
+	_______________
+	| Guest| Guest|
+        |  OS  |  OS  | 
+	|______|______|     |  Bu alandakiler
+	|  VM  |  VM  |     | Hyper-V server
+	|______|______|     | VMware vSphere/ESX/ESXi
+	|	      |     | Citrix XenServer
+	| Hypervisor  |     | R.H.E.V
+	|_____________|     | Oracle VM server 
+	|             |     |
+	|  Hardware   |     | NOT: genelde sunucularda direk bu sistem kullanılır 
+	|_____________|
+ 
+ 
+  2-)Hosted Architecture
+	_______________
+	| Guest| Guest|
+        |  OS  |  OS  | 
+	|______|______|
+	|  VM  |  VM  |  
+	|______|______|      | Bu alandakiler
+	|	      |      | Hyper-V
+	| Hypervisor  |      | Vmware Workstation/Player
+	|_____________|      | Virtual Boc
+	|             |      | Windows Virtual Pc
+	|   Host OS   |      | Veertu/Anka
+	|_____________|      |
+	|	      |
+	|  Hardware   |
+	|_____________|
+
+#############################################################################################################
+
+-GNU/Linux NEDİR:
+
+> Linux, linux bu adıyla bir işletim sistemi değil bir işletim sistemi çekirdeğidir 
+> Richard Stallman'ın işletim sistemi olan GNU ve Linus Torvalds'ın çekirdeği linux birleşti ve GNU/Linux
+  ortaya çıktı 	
+> ismi için yaygın kullanım "linux" olsada doğrusu GNU/Linux tur 
+    _
+   /|\
+    |	4) uygulamalar ve kullanıcı -----------> google chrome vs
+    |
+    |	3) Kbuk (shell) "işletim sistemi" -----> Debian, Suse, Ubuntu , kuhelelunix (kali) 
+    |	
+    |	2) Çekirdek (kernel)	---------------> Linux
+    |	
+    |	1) Donanım	------------------------> ekran kartı cpu falan
+    |
+
+NOT: GNU 3 ile belirtilen yerde, Linux ise 2 ile belirtilen yerde çalışır 
+	Açılış sıralarıda 1-4 şeklinde yazılmıştır ve okla gösterilmiştir 
+	
+#############################################################################################################
+
+-GNU/Linux DAĞITIMLARI (Distrubition veya Distro):
+
+> bir dağıtım linux çekirdeği ve üzerindeki tüm yardımcı programlardan oluşur 
+> dağıtımlar, hedeflenen kullanım alanına göre ufak farklılıklar içerir 
+	dosya-dizin yapıları paket yükleme vs
+
+> bazı distrolar 
+	- debiam -> kararlılık ve geliştiricilik 
+	- suse -> çok yönlülük 
+	- ubuntu -> bireysel gündelik kullanım 
+	- RddHat -> kurumsal, endistrüyel kullanım 
+	- Fedora -> RedHat tabanlı ve ücretsiz hali
+	- CentOS -> RedHat tabanlı, fedoradan stabil ---> çok yaygındır 
+	- pardus -> bireysel, gündelik kullanım, milli
+	- archlinux -> uzmanlık gerektiren, kararlı, stabil ---> güvenlik testleri için black arch hali vardır 
+	- kali -> debian tabanlı güvenlik testleri odaklı 
+	- parrot -> debian tabanlı güvenlik testleri ve gizlilik odaklı ---> anonsurf vs var 
+	
+#############################################################################################################
+
+-GNU/Linux MASAÜSTÜ ORTAMLARI (DESKTOP ENVIROMENTS):
+
+> arayüzler kullanıcı ile işletim sistemi arasında grafiksel olarak etkileşimi sağlayan tabanlar, yorumlayıcılardr
+> işletim sistemini amacınıza veya konforunuza uygun halde kullanmanızı sağlar 
+> tema değildir temalarıda kapsayan bir grafik arayuz kavramıdır 
+> kurulum sırasında veya kurulum sonrasında değiştirilebilirler 
+
+  -GNOME:
+  > en yaygın kullanılandır 
+  > GNU Networ Object Model Enviroment'in kısaltmasıdır 
+  > GNU projesi kapsamında kollektif olarak geliştirilir en büyük destekçisi RedHat dır 
+  > ilk versiyonu 1999 da yayınlanmıştır 1,2 ve 3. versiyonları bulunmaktadır 
+  > Dosya yonetici Nautilus'tur 
+  
+  -XFCE:
+  > performans odaklı yalın ve en hafifidir 
+  > ilk versiyon 1996 da yayınkanmıştır 
+  > RedHat ın ortak uyumluluk adına freedesktop.org da yayınladığı talimatlara bağlılık gösterir 
+  > dosya yöneticisi olarak Thunnar'ı kullanır 
+  
+  -MATE:
+  > performans odaklı GNOME alternatifi 
+  > GNOME un versiyon 3 e geçmesine tepki olarak oluşturuldu GNOME v2 tabanlıdır 
+  > ilk sürümü 2011 de yayınlandı 
+  > dosya yöneticisi olarak caja kullanır 
+  
+  -KDE:
+  > KDE windows kullanıcısı hedeflidir ve yoğun grafik işlemlidir 
+  > ilk sürümü 1996 yılında yayınlanmıştır 
+  > 1-5 versiyonları bulunmaktadır 
+  >  dosya yöneticisi olarak Dolphin'i kullanır 
+  
+  -CİNNAMON:
+  > cinnamon, gnome tabanlıdır linux mint ekibi tarafından geliştirilir 
+  > ilk sürümü 2011 yılında yayınlanmıştır 
+  > en yenilikçi ve modern arayüz 
+  > acemi dostudur 
+  
+#############################################################################################################
+
+-GNU/Linux PAKET YÖNETİCİLERİ:
+
+_____________________________________________________________
+|		 | 		 	|		    |
+| paket uzantısı | Paket kullanıcı (OS) | Paket yükleyicisi |
+|________________|______________________|___________________|
+|		 |		 	|		    |
+| 	         | Debian		| dpkg 		    |
+|	.deb	 | Ubuntu		| aptitude          |
+|		 | Kali			| apt               |
+|		 | Parrot		| dselect	    |
+|________________|______________________|___________________|
+|		 |		        |		    |
+|		 | CentOS		| yum		    |	
+|	.rpm	 | Fedora		| dnf               |
+|		 | RedHat		|                   |
+|		 | OpenSuse		| zypper	    |
+|________________|______________________|___________________|
+|		 |			|		    |
+|		 | Pardus		| pisi		    |
+|	.pisi	 | SolusOS		|		    |
+|________________|______________________|___________________|
+|		 |			|		    |
+|	.pkg	 | arch 		| pacman	    |
+|________________|______________________|___________________|			
+
+#############################################################################################################
+
+-GNU/Linux DİZİN YAPISI:
+
+		|--> /bin: kullanıcı komutları, shell de kullanılabilecek komutlar burada yer alır
+		|
+		|--> /sbin: root kullanıcı tarafından çalıştırılabilir sistem komutları burada yer alır
+		|
+		|--> /etc: tüm kullanıcı ve sistem ayarları dosyalar halinde buradadır 
+		|
+		|--> /dev: donanımı temsil eden dosyalar buradadır örneğin diskler
+Root dizin / ---|
+		|--> /proc: işletim sistemi işlem süreçlernin anlık tutulduğu sanal dosya sistemi
+		|
+		|--> /var: event (olay) logları gibi değişken boyutlu dosyalar burada tutulur 
+		|
+		|--> /tmp: geçici olarak oluşturulması gereken silinecek olan dosyalar buradadırlar 
+		|
+		|--> /home: kullanıcıların uygualamarı ve yazma izinleri olan dosyalar buradadır 
+		|
+		|--> /mnt: geçici mount edilmiş dosya sistemlerinin mount edildiği dizindir
+		|
+		|--> /opt: kendi kütüphanesiyle gelen uygulamaların kütühane dosyaları buradadr
+		| 
+		|--> /srv: işletim sisteminde çalışan tüm servis dosyaları buradadır 
+		|
+		|--> /usr: çalıştırılabilir dosyalar ve kullanıcı uygulamalarının depolandı yer
+		|
+		|--> /lost+found: silinen veya kesinti nedeniyle işlemi yarıda giden dosyalar bulunur
+		|
+		|--> /boot: açılış için gerekli bilgiler ve kernel imajı burada bulunur ör:initrd.img
+		|
+		|--> /lib: kütüphane ve kernel modül dosyaları burada bulunur 
+		|
+		|--> /media: falsh bellek, usb aygıtlar gibi kaldırılabilir aygıtların bilgi dosyaları brada
+		
+birkaç not:
+	> .so windowsdaki .dll gibi kütüphane dosyalarıdır 
+	> /usr ve /opt temel farkı /usr sistem , /opt 3.parti uygualamar için kullanılır  
+	> linux sistemlerde büyük-küçük harf duyarlılığı vardır 
+	> linux da donanımlar dahil herşey dosyalardan oluşmaktadır 
+	
+#############################################################################################################
+
+-KALİ VS PARROT OS KARŞILAŞTIRMASI 
+
+ Parrot'un önde olduğu alanlar:
+  > kalide min 20 gb disk ve 1gb ram isterken parrot 16gb disk 320mb ram istiyor 
+  > kali grafik hızlandırmaya ihtiyaç duyar 
+  > parrot'da daha fazla hack aracı vardır 
+  > parrot da kripto araçları ve programlama araçları ve ortamı vardır 
+  > parrot da anonimlik sağlayan anonsurf servisi vardır 
+ 
+ Kalinin önde olduğu alanlar:
+  > çok sayıda masaustu ortamı 
+  > kendi repolarını kullanır parrot da kali reposu kullanır 
+  > daha güncel repoları vardır ve daha yaygın kullanılır 
+  > BackTrack tecrübesi 
+ 
+#############################################################################################################
+
+-Linux İÇERİK KOMUTLARI:
+
+>pwd -> bulunduğumuz dizini verir (Print Work Dictionary)
+
+>cd: -> dizin değiştirmemizi sağlar (change directory)
+  |
+  |-	cd gidilecek_dizin -> istenilen dizine gidilmesini sağlar 
+  |-	cd -> argumansız kullanımda ev dizinine gider 
+  |-	cd .. -> üst dizine gider 
+  |-	cd ../ -> iki nokta slaş sayısı kadar üst dizine gider 
+	
+>ls: -> dizinin içeriğini listeler
+  |
+  |-	ls -l -> ayrıntılı dizin içeriği 
+  |-	ls -al -> gizli dosyalarıda gösterir 
+  |-	ls -S -> dosya büyüklüğüne göre listeleme yapar 
+  |-	ls -lh -> h daha okunaklı dosya boyutları sağlar 
+  |-	ls -lt -> dosya ve dizinlerin değişiklil tarihlerini gösterir 
+	
+#############################################################################################################
+
+-Linux DOSYA/DİZİN KOMUTLARI:
+
+>touch dosya_adı_ve_uzantısı -> dosya oluşturmamızı sağlar 
+
+>cat dosya -> dosyayı okumamızı sağlar 
+
+>echo "merhaba" -> ekrana merhaba yazar 
+
+>more ve less -> çok uzun dosyaları sayfa sayfa ekrana yazar 
+
+>head ve tail -> head dosyanın ilk 10 tail ise son 10 satırını okumamızı sağlar -n ile değiştirilebilir bu
+  |-   	örnek:	tail -n 20 dosya.txt -> son 20 satırı okur 
+		
+>grep -> bir ifadeyi herhangi bir dosya veya dizinde aramamızı sağlar 
+  |	
+  |-	grep -v -> verilen ifade hariç aramalar yapar 
+  |-	grep -i -> küçük büyük harf duyarlılığını kaldırır 
+  |-	grep -r -> alt dizinlerdede arama yapar 
+	
+>find aranacak_dizin -name dosya_adı -> bir dosyayı vs ilgili dizinde aramamızı sağlar 
+
+>cp -> dosya kopyalamayı sağlar 
+   |		
+   |-	cp -i -> üzerine yazma işlemlerinde onay ister 
+   |-	cp -r -> dizinleride kopyalamamızı sağlar 	
+
+> mv -> dosya taşıma komutudur cp deki ifadeler budada geçerlidir ve aynı zamanda dosyaların ismini
+  değiştirirkende kullanılmaktadır 
+ 
+> rm -> dosya silme komutudur 
+  |
+  |-	rm * -> şeklinde kullanırlırsa ilgili dizin altındaki tüm dosyaları siler 
+  |-	rm -r -> alt dosya ve dizinleride silmeyi sağlar 
+  |-	rm -i -> silme işlemlerinde onay ister 
+  |-	rn -rf -> sorgusuz zorla silme işlemi yapar 
+  
+> mkdir dizin_adı -> dizin oluşturma komutudur (mkdir dizin1 dizin2)
+  |	
+  |-	mkdir -p -> alt dizinler oluşturmayı sağlar örnek: kodlama/python/ders1 şeklinde
+  
+################################################################################################3############
+
+-Linux ARŞİV KOMUTLARI:
+
+  1-) Arşivleme:
+  > tar cvf dosya.tar arşivlenecek_dosyalar -> dosyaları arşivleme komutudur  
+  > tar xvf dosya.tar -> arşivden çıkartma komutudur 
+  	
+  	x -> extrack
+  	v -> verbose 
+  	f -> file 
+  	c -> create 
+  anlamına gelmektedir 
+  
+  2-) Sıkıştırma:
+  > gzip dosya_lar -> dosyaları sıkıştırma komutudur oluşan dosyalar .gz uzantılı olurlar 
+  > gunzip dosya.gz -> gz dosyaları çıkartma komutudur 
+  
+  3-) Sıkıştırarak arşivlemek:
+  > tar czvf dosya.tgz/tar.gz dosya_lar -> dosyaları gzip kullanarak arşivleme ve sıkıştırma işlemidir 
+  > tar xzvf dosya.tgz/tar.gz -> tgz dosyaları çıkartma komut 
+  
+  4-) İçerik okuma:
+  > zcat dosya.tgz -> gzip dosyasının içeriğini okuma/listeleme komutudur 
+  
+  5-) Zip ve rar sıkıştırma açma:
+  > zip dosya_adı.zip dosya_lar -> zip kullanarak dosyaların sıkıştırılması komutudur 
+  > unzip dosya.zip -> zip dosyalarının çıkartılması komutudur 
+  
+  > unrar dosya.rar -> rar dosyalarının çıkartma komutudur 
+  
+#############################################################################################################
+
+-Linux DOSYA-DİZİN ERİŞİM YETKİLENDİRMELERİ:
+
+> dosya ve dizinlerin erişim haklarını ls -l komutuylar görüntülenebilir
+
+> yetki ifadeleri ve anlamları
+  |	
+  |----karakter 	anlamı
+  
+  	d 	-> 	Directory anlamındadır nesnenin dizin olduğu anlamındadır 
+  	- 	->	nesnenin bir dosya (file) olduğunu belirtir 
+  	r	-> 	Read anlamındadır okuma izni var demektir 
+  	w 	-> 	Write anlamındadır yazma izni var demektir 
+  	x	->	eXecute anlamına gelir çalıştırma izni var demektir 
+  	
+> Yetki ifadeleri 10 adettir 4 bölümden oluşur bunlar:
+____________________________________________________________________
+|                 |		   |               |               |
+|	1.bölüm	  |	2.bölüm	   |	3.bölüm	   |	4.bölüm	   |	
+|_________________|________________|_______________|_______________|
+|		  |Kullanıcının    |Grubun	   | Diğerlerinin  |
+|Nesne türü 	  |  Yetkileri	   |  Yetkileri    |  yetkileri    |
+|_________________|________________|_______________|_______________|
+|		  |		   |		   |		   |
+| - veya d	  | r w x	   | r w x	   | r w x	   |
+|_________________|________________|_______________|_______________|
+
+
+
+> dosya ve dizinlerin erişim hakları "chmod" komutu ile değiştirilir 
+
+> kullanım kalıbı şu şekildedir 
+	|
+	|-> chmod  u/g/o/a  +/-/=  r/w/x/s/t  buraya_nesne
+
+> komuttaki ifadeler şu şekilde anlamlandırılır:
+ 
+  	chmod    u/g/o/a    +/-/=    r/w/x/s/t    nesne	
+	  |	    |	      |		|	    |-> işlemin uygulandığı nesne 
+	  |	    |         |		|-> izinler 		
+	  |	    |	      |
+	  |	    |         |--> + -> ekleme
+	  |	    |		   - -> çıkartma
+	  |	    |		   = -> eşitleme 
+	  |         |--> u -> User 
+	  |		 g -> Group
+	  |--> komut	 o -> Others
+			 a -> Alld
+
+not: / vaya anlamı katmak için kullanılmıştır 
+
+> örneğin test.txt dosyasına herkes için okuma izni vermek istersek 
+	
+	chmod a+r test.txt 
+  şeklinde veririz
+  
+#############################################################################################################
+
+-Linux REPO (REPOSİTORY) KAVRAMI:
+
+> paketler manuel olarak yada repository adındaki depolardan yüklenirler 
+> debainda manuel paketler dpkg aracıyla repo paketleri ise apt aracı ile yüklenir 
+> debain'da repolar /etc/apt/sources.list dosyasındadır apt aracı burayı okur 
+
+> dpkg açılımı -> Debian PacKaGe
+
+  -PAKET KURULUM KOMYUTLARI:
+  
+  > dpkg -l -> sistemdeki paketleri listeler 
+  > dpkg --get-selections -> kurulu ve kaldırılmış programları listeler 
+  > dpkg -s program_adı -> kurulan program hakkında bilgi verir 
+  > dpkg -L program_adı -> kurulu programın paket içeriğini gösterir 
+  > dpkg --info paket_adı.deb -> kurulacak program hakkında bilgi verir 
+  > dpkg -c paket_adı.deb -> programın nereye kurulacağını gösterir 
+  > dpkg -i paket_adı.deb veya *.deb -> paketi yükler * ile çoklu yükleme yapar -önemli
+  > dpkg -reconfigure program_adı -> kurulu programı onarır			-önemli  
+  > dpkg -P program_adı -> kurulu programı kaldırır   				-öenmli
+  
+  > apt-get install program_adı -> programı depodan (repodan) yükler	-önemli
+  > apt-cache show program_adı -> yüklenecek program hakkında bilgi verir 
+  > apt-get remove program_adı -> kurulu programı kaldırır 
+  > apt-get purge program_adı -> programı tüm dosyalarıyla kaldırır 	-öenmli
+  
+#############################################################################################################
+
+-Linux'ta KAYNAK KOD (SOURCE CODE) KURULUMLARI:
+
+> programlar paketlerle kurulabildiği gibi kaynak kodlarıylada kurulabilirler 
+> bunun yapılabilmesi için DMKS (Dynamic Kernel Module Support) framework'ü kurulu olmalıdır 
+
+> programın kaynak kodu indirilerek dizinine gidilir ve aşşağıdaki komutlar kullanılır 
+	|
+	|-> bu komutar şunlardır:
+	    |->	./configure -> kaynak kodu hakkında ayarlamalar içerir herzaman bulunmaz 
+	    |->	make -> kaynak kodun makefile dosyasını arar ve yükleme işlemi için hazırlar 
+	    |->	make install -> kaynak kodu yükler 
+	    |->	./dosya_adı.sh -> kaynak kodu yüklenmesini otomotikleştirir veya kurulumda opsiyonlar sağlar
+	    |->	make uninstall -> kaynak kodu kaldırır 
+		
+#############################################################################################################
+
+-Linux'ta SİSTEM GÜNCELLEME:
+
+> güncelleme işlemi gerekliliği, sistemdeki program versiyonlarının depolardakiler ile karşılaştırılması
+  ile belirleni (apt-get update)
+> indirilen update dosyalarına archive (arşiv) indirilen yerede cache (önbellek) adı verilir 
+> cache /var/cache/apt/archives dosya yolunda bulunur, arşivler .deb dosya uzantısı ile burada bulunurlar 
+
+    > apt-get update -> mevcut programlar ile depodakiler arasında versiyon kontolu yapar 
+      ve güncelleme için index oluşturur 
+    > apt-get upgrade -> mevcut programların güncellenmesini sağlar 
+    > apt-get autoclean -> cache de olan ama artık repoda olmayan paketleri kaldırır 
+    > apt-get autoremove -> kaldırılmış bir paketin bağımlılıklarını kaldırır 
+    > apt-get clean -> cache deki tüm arşivleri kaldırır 
+    > apt-get dist-upgrade -> bağımlılık problemlerini çözer ve kernel'i günceller 
+	|-> direk olarak distro'yu günceller örnek: parrot 3 den parrot 4 e geçirir 
+    
+not: update olmadan upgrade pek bir işe yaramaz bundan dolayı once updateyi sonra upgrade yi çalıştırıyoruz
+
+not: giriş ekranı yoneticisi ayarları 
+	|-> /etc/lightdn/lightdm.conf 
+	şeklinde bulunacaktır hangi kilit ekranı yöneticisini kullanıyorsanız onun adıyla olacaktır 
+	bu dosyalar ÇOK DİKKATLİ OLMAK LAZIM!!!!
+
+kenarnot: caja da masaustu nu aktif etme komutu
+	|-> caja --force-desktop 
+	şeklindedir 
+	
+#############################################################################################################
+	
+-PARROT MATE ÖZELLEŞTİRMELERİ:
+
+	sudo apt-get install figlet -> ascII ile yazı yazmamızı sağlar terminalde 
+	figlet -f standard "terminale_yazılacak_yazı"
+		|-> bunu .bashrc veya hangi shell i kullanıyorsak onun başlangıç dosyasına 
+		yazarak her termşnal açtığımızda otomatik yazar 
+	
+	sudo apt-get install lolcat 
+		|-> yazılanları renkli yapar 
+
+#############################################################################################################
+
+	SAYFA SONU EKLEME KISMI bu belgeyi cat dosya >> dosya2 ŞEKLİNDE BİRLEŞTİREBİLİRSİNİZ
+	
+#############################################################################################################

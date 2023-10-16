@@ -1,0 +1,358 @@
+#############################################################################################################
+
+-KAYHAN KIRBAŞ ETİK HACKİNG - NOT 3 - SİBER GÜVENLİK TEMELLERİ
+
+#############################################################################################################
+
+-SİBER GÜVENLİK NEDİR:
+
+> bilgi kaynaklarının, veriye veriye zarar verme faaliyetlerine karşı korunmasıdır 
+
+> bireyler için: güvende hissetmek, kişisel verilerin korunması ve gizliliği sağlamak 
+> kurumlar için: kritik sistemlerin iş güvenliğini sağlamak ve veri sızıntısını önlemek 
+> devletler için: vatandaş, kurum ve devlet sistemlerinin siber tehditlere karşı korunmasını veri
+  ihlallerinin önlenmesi 
+  
+  
+  ____________	   ____________	     ___________________      __________________
+  |	     |	   |	      |	     |		       |      |   	       |
+  | gizlilik |  +  | bütünlük |  +   | erişilebilirlik |   =  | siber güvenlik |
+  |__________|     |__________|	     |_________________|      |________________|
+  
+
+-SİBER GÜVENLİK NE DEĞİLDİR:
+
+>  siber güvenlik etik hacking ve pentesterlık demek değildir bunları kapsar ama bunlara denk demek değildir 
+   yani pek çok alt dalı vs vardır
+
+#############################################################################################################
+
+-İSTATİSTİKLER İLE SİBER GÜVENLİK:
+
+> kullandığınız mail adresi sızdırıldımı diye kontrol etmek için 
+	|-> haveibeennpwned.com adresine bakabilirsiniz 
+
+> 1.8 milyar web sitesi vardır ve günde yaklaşık olarak 90.000 tanesi hacklenmektedir (2021 itibariyle)
+
+#############################################################################################################
+
+-ZARARLI YAZILIM (MALWARE) LAR VE TÜRLERİ:
+
+  -VİRÜSLER:
+  > kendi kendini kopyalayabilen ve yayılarak sistemi değiştirebilen yazılımlardır 
+  > etkileşime ihtiyaç duyarlar; çalıştırılana kadar sessiz bekleyebilirler 
+  ______________________________________________________________________________________________________
+  |   VİRÜS TÜRÜ		İŞLEVİ                                                                        |
+  | > Boot	->	işletim sistemi açılışında çalışıp kendini yükler                             |
+  | > Web scripting -> 	web saydaları ve tarayıcılardaki açıkları istismar ederler                    |
+  | > Hijacker	  ->	web sayfa fonksiyonlarını ele geçirerek farklı sayfalara yçnlendirme yapar    |
+  | > Resident 	  -> 	RAM'e yerleşerek kalıcılık sağlarlar                                          |
+  | > Polymorphic   ->    Anti virüsten kaçmak için kodunu her açılışta yen,ler			      |
+  | > Makro (VBA)	  ->  	Kendi kodunu dosyalara eklerler					      |
+  |____________________________________________________________________________________________________|
+ 
+ 
+  -SOLUCANLAR (WORMS):
+  
+  > Virüslerden farklı olarak dosya veya programlara bulaşmazlar 
+  > insan etkileşimine veya tetikleyiciye ihtiyaç duymazlar 
+  > kendini kopyalayabilir ve yayılabilirler 
+  > Arka kapı (Backdoor) açma, dosya silm, veri sızdırma, BOTNET'e sokma gibi işlevleri vardır 
+  > Meşhur olanları arasında "stuxnet" vardır nam-ı değer "ilk siber silah"
+  
+     
+  -TRUVA ATLARI (TROJAN)
+  
+  > En belirgin özellikleri, faydalı gibi gözükmeleridir 
+  > faydalı gibi görünen içeriklerle bulaşırlar örnek: crack
+  > virüs ve solucanların tüm işlevsel özelliklerini taşırlar 
+  > IoT cihazlarını da hedef alırlar 
+  > geniş bir aileye sahiptir 
+  
+  _________________________________________________________________________________________________________
+  |   TROJAN TÜRÜ		İŞLEVİ									  |
+  |-------------------------------------------------------------------------------------------------------|
+  | >Backdoor ->  farkındasız olarak bilgisayara erişim sağlatırlar 					  |
+  | >Exploit  ->  Hedefte çalışan bir uygulama veya kodu hedef alarak sızarlar 				  |
+  | >Rootkit  ->  Aktivitelerin farkedilmeden yürütülebilmesini sağlar 					  |
+  | >Trojan-Banker  ->  Online bankacılık ödeme sistemleri ve kart bilgilerini çalmayı hedeflerler	  |
+  | >Trojan-DDOS  ->  Bulaştığı sistemden başka bir hedefe DDOS amacıyla talep gönderirler 		  |
+  | >Trojan-Dropper  ->  Güvenlik yazılımlarını etkisizleştirmeyi ve farklı trojanlar almayı hedeflerler  |	
+  | >Trojan-FaketAV  ->  Antivirüs gibi davranıp tehtidleri kaldırmak için para talep ederler 		  |
+  | >Trojan-IM	->  Anlık mesajlaşma uygulamalarında kullanılan hesap bilgilerini çalarlar 		  |
+  | >Trojan-Spy	->  Klavye girdilerini ve ekran fotoğgrafları akmak için kullanılırlar 			  |
+  | >Trojan-MailFinder  ->  hedefte kullanılan tüm mail adreslerini almayı hedefler 			  |
+  | >Trojan-SMS  ->  Mobil cihazlardan ücretli sms göndermeyi hedeflerler 				  |
+  | >TrojanClickers  ->  Tarayıcı ayarlarını değiştirerek yönlendirme yaparlar				  |
+  | >Trojan-PSW  ->  Hedef sistemdeki parolaları çalmayı amaçlarlar 					  |
+  | >Trojan-Downloader  ->  Daha farklı trojanları sisteme indirmeyi hedeflerler			  |
+  | >Trojan-GameThief  ->  Online oyunlardaki hesap bilgilerini çalmayı hedefler 			  |
+  | >TrojanArcBomb  ->  küçük görünen ve hatalı arşiv dosyalarını açarak diski doldurmayı hedefler	  |
+  | >Trojan-Proxy  ->  İnternet erişimini saldırganın kullanımına açar 					  |
+  | >Trojan-RAT  ->  Mause kontrolüne kadar tüm kullanıcı işlemleri için saldırgana imkan verir 	  |
+  |_______________________________________________________________________________________________________|
+   
+  -CASUS YAZILIMLAR (SPYWARE):
+  
+  > işletim sistemine bulaşarak farkındasız olarak kullanıcının hassas bilgilerini ifşa ederler 
+  > parolalar email adresleri, web tarayıcı geçmişi, sistem bilgileri log dosyaları kullanıcı 
+    aktiviteleri gibi bilgileri edinip sahibine iletmeyi hedefler 
+  > şifre çalma (passwor stealers)
+    kalvye girişlerini yakalama (KeyLogger)
+    Banka hesap bilgilerini çalma (Banking Trojans)
+    Bilgi sızdırma (infostealers)
+    	gibi faaliyetlerde bulunurlar 
+  
+  
+  -ROOTKİT'ler VE TÜREVLERİ:
+  
+  > işletim sistemi çekirdeğine sızdığı için en tehlikelisidir 
+  > Tam yetki ile çalıştığı için eylemlerinin sınırı yoktur 
+  > tespitleri ve silinmeleri oldukça zordur 
+  > IoT cihazlarını hedef alabilir 
+  > Virüs, worms, trojan ların tüm işlevlerinin kapsarlar 
+  _____________________________________________________________________________________________________
+  | Rootkit türü		işlevi								      |
+  |---------------------------------------------------------------------------------------------------|
+  |> kernel rootkit  ->  Çekirdek (kernel) seviyesinde çalışır                                        |
+  |> firmware rootkir  ->  donanıma gömülü işletim sistemlerini hedefler                              |
+  |> App rootkit  ->  Çekirdeğe değil uygulamalara kod enjekte ederler                                |
+  |> Mem rootkit  ->  Çekirdekte değil ram de çalışırlar ve iyi gizlenirler                           |
+  |> BootLoader Rootkit  ->  Boot kayıtlarına yerleşirler dosya sistemine antivirüslere görünmezler   |
+  |> Library rootkit  ->  Kütüphane dosyalarını enfekte ederler 				      |
+  |> Hypervisor rootkit  -> Sanallaştırma platformu katmanlarına yerleşirler iyi gizlenirler  	      |	
+  |___________________________________________________________________________________________________|
+
+
+  -FİDYE YAZILIMLARI (RANSOMWARES):
+   
+  > dosya sistemini hedef alarak verileri kriptolarlar 
+  > verilerin çözülebilmesi için kripto para talebi gönderirler 
+  > ağ vektörlerini kullanarak kullanıcı etkileşimsiz çalışabilirler (solucanların ozelliklerindendir buda)
+  > en meşhurları arasında WannaCry vardır 139 ve 445 portları üzerinden EternalBlue (MS17-010)  
+    güvenlik açığını kullanmıştır sahiplerine 150.000$ gelir elde ettirmiştir 
+    
+  
+  -CRYPTOJACKİNG'ler
+  
+  > bilgisayarın kaynaklarını kullanarak saldırgan adına kripto para madenciliği (CryptoMining) yapar
+  > Bilgisayar kaynaklarının tüketiminde anormallik yapar 
+  > gizlilik esaslı kodlanmıştır 
+  
+  
+  -İSTİSMAR KİTLERİ (EXPLOİT KİT - EK):
+  
+  > popüler yazılımlardaki açıkları (vulnerability'leri) istismar (exploit) ederler 
+  > Genellikle C, Perl, Python ve Rubby dillerinde yazılırlar 
+  > Web sitelerinin kodlarında bulunurlar 
+  > Filtreleme >>> Tespit >>> İstismar şeklinde çalışırlar 
+  
+  
+  -İSTİSMAR TİPLERİ:
+  	|-> Java tabanlı istismar (Java based)
+  	|-> iFrame İstismarları ("iFrame Virüs")
+  	|	|-> html içeriğindeki bir fonksiyon sayesindedir 
+        |
+  	|-> Water Holing 
+  	|	|-> hedefin gelmesinin beklendiği ataklardır 
+  	|	    bir kurumun çok kullandığı siteleri enfekte ederek onların gelmesini beklemektir 
+  	|-> Zero-Day istismarları
+  		|-> geliştiricilerden önce bir açık bulmak ve onu fixlenmeden kullanmaktur 
+           
+####################################################################################################
+
+-ANTİ VİRÜSLERİN ÇALIŞMA PRENSİPLERİ:
+
+> Byte-Signature:
+  Yazılımın (virüsün) makine dilindeki karşılığından bir bölümü alınarak tanınır
+	|-> bu işlemler hex editörler vs ile alınabilir 
+	|-> hxd editor mesela 
+	
+> Hash-Signature:
+  Yazılımın HASH değeri alınarak tanınır En ufak bir değişiklikte tanınmaz olacağı için risklidir 
+
+> Heuristic:
+  Sezgisel tanıdır, kodun içeriğinden çok davranışları izlenerek tanınmaya çalışılır 
+  Performans ve zaman kaybettirebilir 
+
+#############################################################################################################
+
+-AĞ TEHDİTLERİ - OWASP TOP10:
+
+OWASP -> Open Web Application Security Project 
+______________________________________
+|	-2017 tablosudur             |
+|------------------------------------|
+|> injection  ->  bir veritabanında, istenmeyen işlemleri yürüterek hassas sonuçlar alabilme açığıdır 
+|> Broken Aythentication -> Başka kullanıcıların erişim bilgilerini kullana bilme açığı
+|> Sensitive Data Exposure -> Hassas verilerin transfer sırasında korunmaması ve sızabilmesi
+|> XML enternal Entities (XXR) -> XML Dosyasına kod enjekte ederek veri sızdırıkması
+|> Broken Access control -> yetki mekanizmasının doğru çalışmaması açığı
+|> Security Misconfiguratiom -> yetersiz güvenlik onlemleri nedeniyle çıkan açıklar 
+|> Cross-Site Scripting (XSS) -> Kullanıcının tarayıcısında zararlı kod çalıştırabilme ve yönlendirebilme vs
+|> Insecure Deserialization -> Uzaktan kod yürütebilmek ve diğer açıkları kullanabilmek 
+|> Using Components with Know Vulnerability -> kullanılan bileşenlerin açığından yararlanmak
+|> Insuffcient Logging & Monitoring -> Kayıt izleme ve alarm mekanizmalarının yetersizliği 
+|------------------------------------|
+
+
+  -DOS (DENİAL OF SERVİCE) NEDİR:
+  |-> hizmet dışı bırakma 
+  
+  > hedef sistemin kaynaklarını tüketerek hizmet (cevap) veremez hale getirilmesidir 
+    sistemin kaldırabileceği yükün üstünde anlık iş talepleri gönderilmesidir 
+  > Erişilebilirlik durumunu hedefler, sadece web sayfalarına yönelik değildir! 
+  > Tekil kaynaklıdır, çoklu kaynaktan yapılanı DDOS'tur 
+  > MAC Flooding, ICMP Smurf, TCP SYN flood, DHCP starvation, DNS flood, HTTP get floot, SlowHTTP 
+    ve slowloris, DOS ataklarına birer örnektirler 
+
+  
+  -DDOS (DİSTRİBUTED DENİAL OF SERVİCE) NEDİR:
+   |-> dağıtık hizmet dışı bırakma 
+    
+   > DOS'a göre çoklu kaynaktan yapıldığı için güçlendirilmiş halidir 
+   > BotNet ağına düşürülmüş zombi bilgisayarların komuta edilmesi ile yapılır  
+   > Zombi bilgisayarlara sadece DDOS yaptırılmaz
+  
+  
+  -PİVOTİNG NEDİR:
+  
+  > pivoting ele geçirilen sistemler üzerinden başka sistemlere saldırmaktır 
+  > Port açığı olan bir sunucu pivot olarak seçilir ve açık portunda yönlendirme yapılarak 
+    diğer sistemlerin portlarına erişmek amaçlanır 
+  > genelde DMZ sunucuları üzerinden yapılır 
+             |-> DMZ Subnet - Servers --> savunmasız network diye geçer 
+             	(MAİL, DNS, Application. leri içerirler)
+  
+  
+  -BİTSQUATTİNG VE CYBERSQUATTİNG NEDİR:
+  
+  > BitSquatting -> varolan kurum domainlerinden farklı ama en yakın hallerinin alınarak 
+    kötü amaçla kullanılmasıdır 
+  > CyberSquatting -> varolan kurum domainlerinin aynısı ama TLD (Top Level Domain)'lerine yakın hallerini
+    alarak kötü amaçla kullanılmasıdır 
+    
+                  Facebook 
+      ________________|________________
+      |                               |
+  ____|__________           __________|______
+  |BitSquatting |           |CyberSquatting |
+  |-------------|           |---------------|
+  |-focebook.com|           |-facebook.biz  |
+  |-facebok.com |           |-facebook.info |
+  |-facebokk.com|	    |-facebook.cam  |
+  |_____________|           |_______________|
+
+
+  		   URL (Uniform Resource Locator)
+     _______________|________________
+     |				     |
+     | http://  wwww . google . com  |
+          |       |       |      |
+          |       |       |      |-> Top Level Domaim (TLD)
+          |       |       |-> Domain (Name)
+          |       |-> subdomain 
+          |-> Protocol
+          
+
+  -PAKET MANİPÜLASYONU nedir:
+  
+  > istek (request) paketlerinin içeriğini değiştirerek, gelen cevap (answer) paketlerinden bilgi edinmek,
+    liste çıkartmak (enumeration) amaçlıdır 
+  > Bilgisayar, sunucu, kullanıcılar, uygulamalar, servisler, paylaşımlar hakkında bilgi edinilir 
+    
+  >not: scapy bu işlemler için meşhur bir tooladur
+  
+  
+  -SPOOFİNG nedir ve türleri:
+  
+  > alıcıyı güvenlilir bir kaynaktan veri aldığı yönünde manipüle etmektir 
+  > spoofing -> kelime anlamı aldatma kandırma zehirleme vs
+  
+  > en sık kullanılan türleri:
+  
+  |=========================================================================================================|
+  |Spoofing Türü  |  Açıklama                                                                               |
+  |=========================================================================================================|
+  |Email Spoofing | SMTP açıklarından faydalanarak e-mail başlıklarının değiştirilmesiyle yapılır           |
+  |---------------|-----------------------------------------------------------------------------------------|
+  |IP Spoofing    | TCP/IP paketlerinin herhangi bir kaynaktan gönderilmesidir TCP'de çalışmaz UDP'de yaplr |
+  |---------------|-----------------------------------------------------------------------------------------|
+  |ARP Spoofing   | Ağdaki ip-mac eşleşmeleri manipüle edilerek yapılır göndericiye alıcının sahtesi verilir| 	 
+  |---------------|-----------------------------------------------------------------------------------------|
+  |MAC Spoofing   | Switch'in mac tablosunun manipülesidir, saldırgan bağlı oldu porta hedefin macı         |
+  |  		  | Bildirmesiyle yapılır                                                                   |
+  |---------------|-----------------------------------------------------------------------------------------|
+  |DNS Spoofing   |DNS sunucusu önbelleğinin maniple edilmesiyle olur. RR ların değiştirilerek cevapların   |
+  |		  |yanıltılması ve yönlendirilmesiyle sonuçlanır                                            |
+  |_______________|_________________________________________________________________________________________|
+  
+  >not: swtich lerin kendi portlarında ne takılı diye mac tabloları vardır bunlar manipüle edilebilir 
+  >not: ip spoofing TCP de çalışmama nedeni 3'lü el sıkışma nedeniyledir 
+  
+  
+  -SESSİON HİJACKİNG nedir:
+   |-> çerez çalma (pass the cookie) olarakda bilinir
+   
+  > web ortamında gerçekleşir 
+  > Web ortamında başarılı bir kimlik doğrulamanın taklit edilmesiyle yapılır 
+  > saldırgan, oturum kimliği (Session ID) bilgisi içeren tokenleri çalar ve oda oturum açar 
+  > xss vs durumlarında bu saldırı olabilir 
+  
+  
+  -PASS THE HASH nedir:
+  
+  > bu hash'leri offline olarak kırmak isterler 
+  > parola saldırısı olarakta bilinir 
+  > parola yerine, ağ trafiğinde şifreli (hash'li) olarak gönderilen parolanın kullanılmasıdır 
+  > NTLM ve kerberos protokollerindeki SSO (single sing on) özelliğinin istismar edilmesidir
+  > Offline olarak gerçekleştirilir 
+  > windows'ta bu işlemleri yürüten Local Security Authority SubSystem (LSASS) uygulamasına saldırılır 
+  > LSASS'ın uygulaması %SystemRoot%\System32\Lsass.exe dir, parolalara ait hash değerlerini saklar 
+  
+  
+  -SOSYAL MÜHENDİSLİK nedir:
+  
+  > teknis saldırıların denenmemiş veya başarısız olması halinde hedefe erişimi bulunan insanları manipüle
+    etme girişimidir 
+  > hedefe erişimde kolaylık sağlamaları adına insanların siber güvenlik bilgisinden gaydalanılır 
+  > hassas bilgiler elde etmek adına, insanların ilgisini çekebilecek linklere tıklatma, içerikler indirtme 
+    yazılı ve sözlü ortamlarda hassas bilgi alma, fiziksel veya dijital giriş yetkilerini elde etme gibi
+    amaçlar doğrultusunda yapılır
+  
+  
+  -TEHDİTLERDEN KORUNMA - BAŞLICA BİREYSEL ÖNLEMLER:
+	
+  > tüm platformlarınızda ücretli antivirüs yazılımları kullanın ve değerlendirerek tercih edin 
+  	|-> bunlarada koşulsuz güvenmeyin!
+  > internet tarayıcınıza antivirüs eklentileri yükleyin
+  	|-> trafic lite gibi
+  > kaynaklarınızı monitör edin ve ağ trafiğinizi gözlemleyin 
+  	|-> glasswire tavsiye edilir 
+  > Güncelleştirmeleri ( OS ve App ) ertelemeyin ve buna yüksek önem gösterin
+  > yedeklemeden kaçınmayın, bunu sık yapın ve OFFLİNE olarak saklayın 
+  > yüksek haklara/ayrıcalıklara sahip kullanıcıları kullanmaktan kaçının ve UAC'i kapatmayın
+  > sabit ve taşınabilir depolama birimlerinizde disk encryption kullanın
+  	|-> VernaCrypt & TrueCrypt tavsiye edilir  
+  > işletim sistemlerinizde security hardening (güvenlik güçlendirme) uygulayın
+    
+  
+  -TEHDİTLERDEN KORUNMA - BAŞLICA KURUSUMSAL ÖNLEMLER:
+  
+  > bilgisayar kullanan tüm personele bilgi güvenliği farkındalık eğitimi verin 
+  > merkezi antivirüs uygulamaları kullanın ve kullanıcı etkileşimsiz olarak dağıtın 
+  > güncellemeleri merkezileştirin ve kullanıcı etkileşimsiz olarak zorlayın 
+  > IPS, IDS DLP, AV gibi özellikli donanımsal güvenlik duvarları kullanın, Honeypot'lar yapılandırın
+  	|-> ıps -> izinsiz giriş önleme sistemi & IDS -> izinsiz giriş tespit sistemi 
+  	|-> dlp -> veri sizıntısı kontrol 
+  	|-> av -> antivirüs 
+  > güvenlik ve güncelleme poliçelerinizi mantık hatasız uygulayın, -yazma izinlerini dorğu verin
+  > yedeklemeleri otomatik, zamanlı, merkezi ve offline özellikte gerçekleştirin 
+  > ISO27001 ve BGYS önlemlerini "gerçek" anlamda uygulayın 
+  > BYOD (Bring Your Own Device)'dan mümkün oldukça kaçının  ve NAP kullanın
+  	|-> kendi cihazını getir durumu!
+  	  	
+#############################################################################################################
+		Sayfa sonu alanı
+#############################################################################################################
+
