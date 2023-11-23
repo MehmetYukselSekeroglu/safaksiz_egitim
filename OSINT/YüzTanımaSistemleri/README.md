@@ -198,7 +198,7 @@ Yukarıdaki pek çok durumu kendim test ederek bunu doğruladım.
 İşimiz bittikten sonra böyle güçlü bir sistemi aktif tutmaya gerek yoktur kapatabiliriz herhangi bir veri kaybımız vs olmaz tekrar başlatınca geri gelir. Kapatmak için komutumuz şudur.
 
 ```shell 
-sudo docker-compose 
+sudo docker-compose down
 ```
 
 <br>
