@@ -52,6 +52,7 @@ cd video2frame
 Görüldüğü gibi 2 seçenek var sadece ilki video ikincisi çıktı temizleme için çıktılar çalışma klasörü altında tmp/cv2output altındadır her video ayıklaması sırasında içeriği temizlenir ama elle temizleme seçeneğide vardır.
 
 <br>
+
 ```shell
 python3 video2frame.py --video /home/user/my_video.mp4
 ```
