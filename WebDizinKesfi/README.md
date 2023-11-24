@@ -184,7 +184,7 @@ dosya olarak algılanacaktır bu nedenle iç yinelemeli taramada hariç tutulur 
 bu nedenle "gizlibelge" gibi direk ismi ile yazacaz ki klasör olarak algilanabilsin.
 </p>
 
-<h2><B><a href="https://github.com/TheKoba-dev/TurkceWebDizinWordlisti">Resimdeki Wordlistin GitHub adresi için tıklyınız.</a> </B></h2>
+<h2><B><a href="https://github.com/MehmetYukselSekeroglu/TurkceWebDizinWordlisti">Resimdeki Wordlistin GitHub adresi için tıklyınız.</a> </B></h2>
 
 <br>
 
