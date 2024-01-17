@@ -129,14 +129,14 @@ Bu kısımdan `Proxies > Add` kısmına tıklayalım orada böyle boş bir proxy
 <br>
 <br>
 
-Gerekli ayarları girdikten sonra alttaki gibi olacaktır ayarları ve amaçlarını açıklayalım. IP kısmına `127.0.0.1` girme sebebimiz çalıştığımız bilgisyarı belirtir trafiği kendi bilgisyarımıza verecez yani, Port kısmına ise BurpSıite'in Proxy olarak dinleme yaptığı `8080` portunu veriyoruz, Proxy tipi olarak `HTTP` seçiyoruz.
+Gerekli ayarları girdikten sonra altdaki gibi olacaktır ayarları ve amaçlarını açıklayalım. IP kısmına `127.0.0.1` girme sebebimiz çalıştığımız bilgisyarı belirtir trafiği kendi bilgisyarımıza verecez yani, Port kısmına ise BurpSuite'in Proxy olarak dinleme yaptığı `8080` portunu veriyoruz, Proxy tipi olarak `HTTP` seçiyoruz.
 
 
 <img src="./img/ayarlariYapalım.png"/>
 <br>
 <br>
 
-Kaydedip çıkalım şimdi prxyler kısmından tekrar BurpSuite için yaptımız proxy yi seçelim.
+Kaydedip çıkalım şimdi proxyler kısmından tekrar BurpSuite için yaptığımız proxyyi seçelim.
 
 <img src="./img/Secelim.png"/>
 <br>
@@ -167,7 +167,7 @@ Girdiğimiz zamana `Authorities` yani güvenilir kurum ve sertifikaları içeren
 <br>
 <br>
 
-import diyerekden demin indirdiğimiz BurpSuite sertifikasını içe aktarmaya başlayalım bu dosya genelde `carter.der` adında inder. İçer aktarırken aşşağıdaki gibi bir ekran gelecek.
+import diyerekden demin indirdiğimiz BurpSuite sertifikasını içe aktarmaya başlayalım bu dosya genelde `carter.der` adında iner. İçer aktarırken aşşağıdaki gibi bir ekran gelecek.
 
 <img src="./img/GerekliTikler.png"/>
 <br>
