@@ -1,0 +1,1 @@
+Automatic Picture Transfer | Otomatik Resim Transferi
