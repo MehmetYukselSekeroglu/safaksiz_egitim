@@ -2,8 +2,5 @@
 
 <p>
 10 ekim 2022 de dostlarımız ile başlatmış olduğumuz türkçe kaynak ve eğitim projemizdir.
-
-
-Telegram Grubu: https://t.me/safaksizEgitim (Güncellendi)
 </p>
 
